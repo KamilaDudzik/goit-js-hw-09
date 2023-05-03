@@ -10,8 +10,10 @@ colorStart.addEventListener("click", () => {
     timerId = setInterval(() => {
         document.body.style.backgroundColor = getRandomHexColor();
     }, 1000);
+    colorStart.setAttribute("disabled", true);
 });
 
 colorStop.addEventListener("click", () => {
     clearInterval(timerId);
+    colorStart.removeAttribute("disabled");
 });
