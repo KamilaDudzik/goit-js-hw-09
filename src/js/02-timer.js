@@ -11,8 +11,6 @@ const valueSeconds = document.querySelector("span[data-seconds]");
 
 let refreshTimer = 0;
 
-// buttonStart.disabled = true;
-
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -20,14 +18,16 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
-    if (selectedDates[0] < new Date()) {
-      Notiflix.Notify.failure("Please choose a date in the future");
+    if (selectedDates[0] <= Date.now()) {
       buttonStart.disabled = true;
+      Notiflix.Notify.failure("Please choose a date in the future");
     } else {
       buttonStart.disabled = false;
     }
   }
 };
+
+buttonStart.disabled = true;
 
 const convertMs = (ms) => {
 // Number of milliseconds per unit of time
